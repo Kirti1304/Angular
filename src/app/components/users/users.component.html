@@ -1,0 +1,34 @@
+<div id="userTable">
+    <div>
+        <table class="table is-striped is-bordered" *ngIf="users.length > 0; else noUsers">
+            <thead>
+                <th>S.No</th>
+                <th>UserName</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Edit</th>
+            </thead>
+            <tbody>
+                <tr
+                *ngFor="let u of users; index as i">
+                    <td  >{{i+1}}</td>
+                    <td >{{u.userName}}</td>
+                    <td>{{u.name}}</td>
+                    <td appHighlighter [ngClass]="{'is-warning':false}">{{u.email}}</td>
+                    <td><a class="icon" (click)="userDelete(i)" >
+                        <i class="fa fa-trash"></i>
+                    </a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<ng-template #noUsers>
+    <div class="columns" id="noUser">
+      <div class="column">
+        <p class="no-users tag">No User Available.</p>
+      </div>
+    </div>
+  </ng-template>
